@@ -19,11 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -75,16 +70,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 #
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get("DB_HOST", 'localhost'),
-        'PORT': os.environ.get("DB_PORT", '5432'),
-        'NAME': os.environ.get("DB_NAME", 'circuit_youth'),
-        'USER': os.environ.get("DB_USER", 'postgres'),
-        'PASSWORD': os.environ.get("DB_PASSWORD", "Kofori123"),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': os.environ.get("DB_HOST", 'localhost'),
+#         'PORT': os.environ.get("DB_PORT", '5432'),
+#         'NAME': os.environ.get("DB_NAME", 'circuit_youth'),
+#         'USER': os.environ.get("DB_USER", 'postgres'),
+#         'PASSWORD': os.environ.get("DB_PASSWORD", "Kofori123"),
+#     }
+# }
 
 
 # Password validation
