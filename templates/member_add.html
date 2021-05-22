@@ -1,6 +1,8 @@
 {% extends '_base.html' %}
 {% load crispy_forms_filters %}
 
+{% block title %} {% if update %}Update{% else %}Add{% endif %} Member - {{ block.super }} {% endblock %}
+
 {% block main %}
 
   <main>

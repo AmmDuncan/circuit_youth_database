@@ -1,11 +1,12 @@
 {% extends "_base.html" %}
 {% load crispy_forms_filters %}
 
+{% block title %} {% if update %}Update{% else %}Add{% endif %} Local - {{ block.super }} {% endblock %}
 
 {% block main %}
   <main>
       <div class="container mt-3">
-      <h1 class="text-center bold">Add New Locals</h1>
+      <h1 class="text-center bold">Add New Local</h1>
       <div class="row mt-3">
         <div class="card form-card py-4 px-5 shadow">
         <form class="add-form" method="POST">
