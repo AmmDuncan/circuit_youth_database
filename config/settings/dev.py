@@ -13,6 +13,6 @@ DATABASES = {
         'PORT': '5432',
         'NAME': 'circuit_youth',
         'USER': 'postgres',
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'PASSWORD': "Kofori123",
     }
 }
