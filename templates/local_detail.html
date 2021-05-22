@@ -1,0 +1,143 @@
+{% extends '_base.html' %}
+
+
+{% block main %}
+  <main>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="heading">
+          <h1 class="text-center bold">{{ local.name|capfirst }}</h1>
+          <div class="card add-card p-0">
+            <div class="card-body p-0">
+              <a href="{% url 'locals:locals-members-add' local.pk %}"
+                class="d-flex flex-row align-items-center justify-content-center align-middle py-md-2 px-md-3">
+                <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem;"></i>
+                <span class="space"> </span> <span class="tab-only">Add Member</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+{#        <div class="col-12 pills">#}
+{#          <div class="pill active">All</div>#}
+{#          <div class="pill"> Kasoa Central</div>#}
+{#          <div class="pill">My Child</div>#}
+{#          <div class="pill">Amanfrom</div>#}
+{#        </div>#}
+
+        <div class="col-md-12 mt-3 mt-md-3">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <h4>Executives <span class="space"></span><span class="badge bg-primary">{{executives.count}}</span></h4>
+                {% for member in executives %}
+                <li class="list-group-item">
+                  <span class="name">
+                    {% if member.position %}
+                      <span class="badge bg-dark">{{ member.get_position_display }}</span>
+                    {% endif %}
+                    {{ member.name }}
+
+                  </span>
+                  <span class="phone1">{{ member.phone1 }}</span>
+                  <span class="phone2">{{ member.phone2 }}</span>
+                  <div class="dropdown dropstart">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{% url 'locals:locals-detail' local.pk %}">Open</a></li>
+                    <li><a class="dropdown-item" href="{% url 'locals:locals-edit' local.pk %}">Edit</a></li>
+                  </ul>
+                  </div>
+                </li>
+                  {% empty %}
+                    No Executives Yet
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+
+                <h4>Members<span class="space"></span><span class="badge ml-3 bg-primary">{{members.count}}</span></h4>
+                {% for member in members %}
+                <li class="list-group-item">
+                  <span class="name">
+                    {{ member.name }}
+                    {% if member.position %}
+                      <span class="badge bg-secondary">{{ member.get_position_display}}</span>
+                    {% endif %}
+                  </span>
+                  <span class="phone1">{{ member.phone1 }}</span>
+                  <span class="phone2">{{ member.phone2 }}</span>
+                <div class="dropdown dropstart">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{% url 'locals:locals-detail' local.pk %}">Open</a></li>
+                    <li><a class="dropdown-item" href="{% url 'locals:locals-edit' local.pk %}">Edit</a></li>
+                  </ul>
+                </div>
+                </li>
+                  {% empty %}
+                    No Members Yet
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    {% if messages %}
+      <div class="toast-container position-fixed  end-0 p-3">
+        <!-- Then put toasts within -->
+          {% for message in messages %}
+
+
+            <div class="toast fade show align-items-center text-white bg-{{ message.tags }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body">
+                  {{ message }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+
+
+{#            <div class="toast showing" role="alert" aria-live="assertive" aria-atomic="true">#}
+{#              <div class="toast-header">#}
+{#                <img src="..." class="rounded me-2" alt="...">#}
+{#                <strong class="me-auto">{{ local.name }}</strong>#}
+{#                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>#}
+{#              </div>#}
+{#              <div class="toast-body">#}
+{#                {{ message }}#}
+{#              </div>#}
+{#            </div>#}
+          {% endfor %}
+      </div>
+    {% endif %}
+
+  </main>
+    {% endblock %}
+
+
+{% block script %}
+    let closeBtns = document.querySelectorAll(".toast .btn-close")
+    closeBtns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.target.parentNode.parentNode.classList.remove("show");
+        e.target.parentNode.parentNode.classList.add("hide");
+      });
+    })
+
+{% endblock %}

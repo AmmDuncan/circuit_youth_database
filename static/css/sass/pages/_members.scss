@@ -1,0 +1,132 @@
+/* ************************************************
+                   MEMBER HEADING
+***************************************************/
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* ************************************************
+                       PILLS
+***************************************************/
+.pills {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.pills .pill {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  background: #d8d8e6;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 20rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.pills .pill:hover {
+  background: #d4d4ec;
+}
+
+.pills .pill.active {
+  background: var(--bs-blue);
+  color: white;
+}
+
+/* ************************************************
+                    List Card
+***************************************************/
+.list-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  overflow-x: scroll;
+  overflow-y: visible;
+  padding-bottom: 2rem;
+  //box-shadow: -.25rem 0 1rem rgba(0,0,0,.1) inset;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar{
+    height: .4rem;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e5e6ed;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #b7b8c2;
+    border-radius: 4px;
+  }
+
+  h4 {
+    display: flex;
+    align-items: center;
+    min-width: 700px;
+    padding: .5rem 1rem ;
+    background: var(--bs-light);
+    //color: #fff;
+    line-height: 1.4;
+
+    &:nth-of-type(2) {
+      margin-top: 3rem;
+    }
+
+    .badge {
+      color: #fff;
+      background: gray;
+      //font-family: "inter";
+    }
+  }
+}
+
+.list-group-item {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  min-width: 700px;
+  display: flex;
+
+  .name {
+    flex: 0 0 50%;
+    min-width: 320px;}
+
+  .phone1 {
+    flex: 0 0 25%;
+  }
+
+  .phone2 {
+    flex: 0 0 25%;
+  }
+
+  .dropdown-toggle {
+    position: absolute;
+    right: 1rem;
+    top: -.5rem;
+
+    &:after, &:before {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+  }
+}
+
+.badge {
+  font-weight: 300;
+}
+
+@media screen and (max-width: 991px) {
+  .list-group {
+    grid-template-columns: 1fr;
+  }
+}

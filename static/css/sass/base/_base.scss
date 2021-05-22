@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter&family=Raleway&display=swap");
+
+body {
+  background-color: #d9d9e6;
+  font-family: "Inter";
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Oswald";
+}
+
+h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.home-main {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  position: relative;
+}
+
+
+.space {
+  display: inline-block;
+  width: 1rem;
+}
+

@@ -1,0 +1,41 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block main %}
+  <main class="home-main">
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-4 mt-3 mt-md-0">
+          <div class="card home-card">
+            <div class="card-body p-4">
+              <h3 class="card-title">Locals</h3>
+              <p class="card-text">List of all Locals</p>
+
+              <a href="{% url 'locals:locals-list' %}" class="btn btn-primary">View Locals</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-3 mt-md-0">
+          <div class="card home-card">
+            <div class="card-body p-4">
+              <h3 class="card-title">Executives</h3>
+              <p class="card-text">List of Executives of all Locals</p>
+
+              <a href="executives.html" class="btn btn-primary">View Executives</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-3 mt-md-0">
+          <div class="card home-card">
+            <div class="card-body p-4">
+              <h3 class="card-title">Members</h3>
+              <p class="card-text">List of Area Youth members</p>
+              <a href="members.html" class="btn btn-primary">View Members</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

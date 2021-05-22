@@ -1,0 +1,25 @@
+.add-member-form {
+  display: flex;
+  flex-flow: column;
+
+  input[type="submit"] {
+    align-self: center;
+  }
+
+  label {
+    margin-top: .75rem;
+    margin-bottom: .25rem;
+  }
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 3rem;
+
+  @media screen and (max-width: 767px) {
+      bottom: 4rem;
+
+  }
+
+}
