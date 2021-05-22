@@ -33,18 +33,27 @@
               <a class="nav-link {% if localspage %}active{% endif %}" href="{% url 'locals:locals-list' %}">Locals</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if executivespage %}active{% endif %}" href="executives.html">Executives</a>
+              <a class="nav-link {% if executivespage %}active{% endif %}" href="{% url 'locals:executives-list' %}">Executives</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if memberspage %}active{% endif %}" href="members.html">Members</a>
+              <a class="nav-link {% if memberspage %}active{% endif %}" href="{% url 'locals:members-list' %}">Members</a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <form class="d-flex" action="{% url 'locals:search' %}" method="GET">
+            <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>
+        <ul class="navbar-nav auth">
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+              <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+            {% else %}
+              <a href="{% url 'login' %}" class="nav-link">Login</a>
+            {% endif %}
+          </li>
+        </ul>
         </div>
       </div>
     </nav>
@@ -52,12 +61,31 @@
 
   {% block main %}{% endblock %}
 
+
+    {% if messages %}
+      <div class="toast-container position-fixed  end-0 p-3">
+        <!-- Then put toasts within -->
+          {% for message in messages %}
+
+
+            <div class="toast fade show align-items-center text-white bg-{{ message.tags }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body">
+                  {{ message }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+
+          {% endfor %}
+      </div>
+    {% endif %}
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
   </script>
-  <script>
       {% block script %}{% endblock %}
-  </script>
 
 </body>
 

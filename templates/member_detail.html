@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load crispy_forms_filters %}
+
+{% block main %}
+
+  <main>
+      <div class="container mt-3">
+      <div class="row mt-3">
+        <div class="card form-card pb-5 pt-3 px-4 shadow d-flex align-items-center">
+          <h1>{{ member.name }}</h1>
+            <p>Local: <strong><a href="{% url 'locals:locals-detail' member.local.pk %}">{{ member.local.name }}</a></strong></p>
+            <p>Address: <strong>{{ member.address }}</strong></p>
+            <p>Phone1: <strong>{{ member.phone1 }}</strong></p>
+            <p>Phone2: <strong>{{ member.phone2 }}</strong></p>
+            <p>Occupation: <strong>{{ member.occupation }}</strong></p>
+          <p>
+            <a class="btn btn-primary mt-4" href="{{ member.get_edit_url }}">Edit</a>
+          </p>
+        </div>
+      </div>
+      </div>
+  </main>
+
+{% endblock %}

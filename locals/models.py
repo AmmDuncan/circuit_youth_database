@@ -2,6 +2,9 @@ from django.db import models
 
 
 # Create your models here.
+from django.urls import reverse
+
+
 class PositionChoices(models.Choices):
     LEADER = 1
     SECRETARY = 2
@@ -26,6 +29,7 @@ class Executive(models.Model):
     name = models.CharField(max_length=100, unique=True)
     position = models.IntegerField(choices=PositionChoices.choices,
                                    default=PositionChoices.MEMBER)
+    address = models.CharField(max_length=100, blank=True)
     local = models.ForeignKey(Local,
                               related_name="executives",
                               on_delete=models.CASCADE)
@@ -51,6 +55,12 @@ class Member(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_edit_url(self):
+        return reverse("locals:members-edit", kwargs={'pk': self.pk})
+
+    def get_absolute_url(self):
+        return reverse("locals:members-detail", kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ("name",)

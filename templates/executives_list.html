@@ -1,0 +1,73 @@
+{% extends '_base.html' %}
+
+{% block title %} Members - {{ super }} {% endblock %}
+
+{% block main %}
+  <main>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="heading">
+          <h1 class="text-center bold">Executives <span class="space"></span><span class="badge ml-3 bg-secondary">{{members.count}}</span></h1>
+
+        </div>
+
+        <div class="col-12 pills">
+          <div class="pill {% if not active_local %}active{% endif %}" data-pk="all">All</div>
+          {% for local in locals %}
+            <div class="pill {% if local.pk == active_local %}active{% endif %}" data-pk="{{ local.pk }}">{{local.name}}</div>
+          {% endfor %}
+        </div>
+
+        <div class="col-md-12 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+
+{#                <h4>Members<span class="space"></span><span class="badge ml-3 bg-primary">{{members.count}}</span></h4>#}
+                {% for member in members %}
+                <li class="list-group-item">
+                  <span class="name">
+                    {{ member.name }}
+                    {% if member.position %}
+                      <span class="badge bg-secondary">{{ member.get_position_display}}</span>
+                    {% endif %}
+                  </span>
+                  <span class="phone1">{{ member.phone1 }}</span>
+                  <span class="phone2">{{ member.phone2 }}</span>
+
+                </li>
+                  {% empty %}
+                  <p class="big">🙅🏾‍♂🙅🏾‍♀️️</p>
+                  <p class="mt-2"><span class="space"></span> No Executives Yet</p>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}
+
+
+{% block script %}
+  <script>
+    'use strict';
+
+    let pills = document.querySelectorAll('.pill');
+
+    pills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+            let targetPill = e.target;
+            let pk = targetPill.dataset.pk
+            let currentURL = new URL(location.href)
+            let url = new URL(
+                `${currentURL.origin + currentURL.pathname}?local=${pk}`
+            )
+            location = url
+        })
+    })
+  </script>
+{% endblock %}

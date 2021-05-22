@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+{% load crispy_forms_filters %}
+
+{% block main %}
+
+  <main>
+      <div class="container mt-3">
+      <h1 class="text-center bold mb-3">Login</h1>
+      <div class="row mt-3">
+        <div class="card form-card pb-5 pt-3 px-4 shadow">
+        <form class="add-member-form" method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" value="Login" class="mt-3 btn btn-primary">
+        </form>
+        </div>
+      </div>
+      </div>
+  </main>
+
+{% endblock %}

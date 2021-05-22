@@ -112,6 +112,18 @@ main .local-card .dropdown-toggle::after {
   margin: auto;
   border-top: 4px solid var(--bs-primary);
 }
+.form-card h1 {
+  position: relative;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+  align-self: stretch;
+  text-align: center;
+}
+.form-card p strong {
+  font-size: 1.125rem;
+}
 
 .add-form {
   display: flex;
@@ -160,6 +172,11 @@ main .local-card .dropdown-toggle::after {
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+.heading h1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 /* ************************************************
                        PILLS
@@ -172,7 +189,7 @@ main .local-card .dropdown-toggle::after {
 .pills .pill {
   font-size: 0.85rem;
   padding: 0.5rem 1rem;
-  background: #d8d8e6;
+  background: #f9f9ff;
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 20rem;
@@ -181,7 +198,7 @@ main .local-card .dropdown-toggle::after {
 }
 
 .pills .pill:hover {
-  background: #d4d4ec;
+  background: #e7e7f1;
 }
 
 .pills .pill.active {
@@ -215,6 +232,16 @@ main .local-card .dropdown-toggle::after {
   background: #b7b8c2;
   border-radius: 4px;
 }
+.list-group > p {
+  display: flex;
+  justify-content: center;
+}
+.list-group > p.big {
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
+  font-size: 2rem;
+  line-height: 0.75;
+}
 .list-group h4 {
   display: flex;
   align-items: center;
@@ -245,7 +272,7 @@ main .local-card .dropdown-toggle::after {
 .list-group-item .phone1 {
   flex: 0 0 25%;
 }
-.list-group-item .phone2 {
+.list-group-item .address {
   flex: 0 0 25%;
 }
 .list-group-item .dropdown-toggle {

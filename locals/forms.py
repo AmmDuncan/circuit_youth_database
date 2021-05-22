@@ -35,13 +35,13 @@ class MemberForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
         self.helper.layout = Layout(
-            "name",
-            "address",
+            Field("name"),
+            Field("address"),
             Row(
-                Column("phone1", css_class="col"),
-                Column("phone2", css_class="col"),
-                css_class="g-4 row"
+                Column("phone1", css_class="col mt-0"),
+                Column("phone2", css_class="col mt-0"),
+                css_class="g-4 row mt-1"
             ),
-            "occupation"
+            Field("occupation")
         )
 

@@ -6,6 +6,12 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 /* ************************************************
@@ -19,7 +25,7 @@
 .pills .pill {
   font-size: 0.85rem;
   padding: 0.5rem 1rem;
-  background: #d8d8e6;
+  background: #f9f9ff;
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 20rem;
@@ -28,7 +34,7 @@
 }
 
 .pills .pill:hover {
-  background: #d4d4ec;
+  background: #e7e7f1;
 }
 
 .pills .pill.active {
@@ -66,6 +72,18 @@
     border-radius: 4px;
   }
 
+  &>p {
+    display: flex;
+    justify-content: center;
+
+    &.big {
+      margin-top: 2rem;
+      margin-bottom: 0.25rem;
+      font-size: 2rem;
+      line-height: .75;
+    }
+  }
+
   h4 {
     display: flex;
     align-items: center;
@@ -85,6 +103,7 @@
       //font-family: "inter";
     }
   }
+
 }
 
 .list-group-item {
@@ -102,7 +121,7 @@
     flex: 0 0 25%;
   }
 
-  .phone2 {
+  .address {
     flex: 0 0 25%;
   }
 
