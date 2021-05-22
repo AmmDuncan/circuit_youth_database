@@ -1,4 +1,4 @@
-from _base import *
+from ._base import *
 
 DEBUG = False
 
@@ -8,7 +8,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get("DB_HOST", 'localhost'),
         'PORT': os.environ.get("DB_PORT", '5432'),
         'NAME': os.environ.get("DB_NAME", 'circuit_youth'),

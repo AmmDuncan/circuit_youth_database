@@ -1,6 +1,4 @@
-import os
-
-from _base import *
+from ._base import *
 
 ALLOWED_HOSTS = []
 
