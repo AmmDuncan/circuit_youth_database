@@ -4,6 +4,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["circuityouth.herokuapp.com"]
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
