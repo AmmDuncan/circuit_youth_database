@@ -1,6 +1,10 @@
+import os
+
 from _base import *
 
 ALLOWED_HOSTS = []
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DATABASES = {
     'default': {
