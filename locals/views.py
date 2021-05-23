@@ -32,16 +32,38 @@ class LocalsListView(mixins.LoginRequiredMixin, ListView):
         return context
 
 
-class CreateLocalView(mixins.LoginRequiredMixin, CreateView):
-    model = Local
-    template_name = "local_add.html"
-    success_url = reverse_lazy("locals:locals-list")
-    form_class = LocalForm
+# class CreateLocalView(mixins.LoginRequiredMixin, CreateView):
+#     model = Local
+#     template_name = "local_add.html"
+#     success_url = reverse_lazy("locals:locals-list")
+#     form_class = LocalForm
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['localspage'] = True
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['localspage'] = True
-        return context
+def local_create_view(request):
+    form = LocalForm()
+
+    if request.method == "POST":
+        form = LocalForm(request.POST)
+
+        if form.is_valid():
+            instance = form.save(commit=False)
+            if not Local.objects.filter(name=instance.name).exists():
+                instance.save()
+                return redirect('locals:locals-list')
+            else:
+                return redirect('locals:locals-list')
+
+    context = {
+        "form": form,
+        "localspage": True,
+    }
+
+    return render(request, "local_add.html", context=context)
+
 
 
 class UpdateLocalView(mixins.LoginRequiredMixin, UpdateView):
@@ -83,10 +105,14 @@ def add_member_view(request, pk):
 
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.local = local
-            instance.save()
-            messages.success(request, f"{instance.name} successfully added")
-            return redirect('locals:locals-detail', pk=pk)
+            if not Member.objects.filter(name=instance.name).exists():
+                instance.local = local
+                instance.save()
+                messages.success(request, f"{instance.name} successfully added")
+                return redirect('locals:locals-detail', pk=pk)
+            else:
+                return redirect('locals:locals-detail', pk=pk)
+
 
     context = {
         "local": local,

@@ -2,8 +2,10 @@ from django.urls import path
 
 from .views import (HomePageView,
                     # local views
-                    LocalsListView, UpdateLocalView, CreateLocalView,
+                    LocalsListView, UpdateLocalView,
+                    # CreateLocalView,
                     local_detail_view,
+                    local_create_view,
                     # member vies
                     MemberListView,
                     MemberDetailView,
@@ -18,7 +20,8 @@ app_name = "locals"
 urlpatterns = [
     path('', HomePageView.as_view(), name="home"),
     path('locals/', LocalsListView.as_view(), name="locals-list"),
-    path('locals/add/', CreateLocalView.as_view(), name="locals-add"),
+    # path('locals/add/', CreateLocalView.as_view(), name="locals-add"),
+    path('locals/add/', local_create_view, name="locals-add"),
     path('locals/<int:pk>/', local_detail_view, name="locals-detail"),
     path('locals/<int:pk>/update/',
          UpdateLocalView.as_view(),

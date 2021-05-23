@@ -19,3 +19,18 @@
       </div>
   </main>
 {% endblock %}
+
+{% block script %}
+<script>
+  let submitBtn = document.querySelector("input[type='submit']")
+
+  submitBtn.addEventListener('click', function (e) {
+    e.target.setAttribute('disabled', '')
+    let parent = e.target.parentNode
+    console.log(parent)
+    if (parent.classList.contains('add-form')) {
+      parent.submit()
+    }
+  })
+</script>
+{% endblock %}
